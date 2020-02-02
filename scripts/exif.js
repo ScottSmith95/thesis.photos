@@ -6,7 +6,7 @@ const ep = new exiftool.ExiftoolProcess(exiftoolBin)
 
 function findCamera(make, model) {
   if (make === "SONY") {
-    if (model === "ILCE-6000") return "Sony α6000";
+    if (model === "ILCE-6000") return `Sony α${model.replace("ILCE-", "")}`;
     if (model === "ILCE-7M2") return "Sony α7 Mark II";
     if (model === "ILCE-7M3") return "Sony α7 Mark III";
     if (model === "ILCE-7M4") return "Sony α7 Mark IV";
@@ -51,14 +51,6 @@ let logData = exifData => {
     const aspectRatio = datum.ImageSize.split("x")
       .map(n => parseInt(n))
       .reduce((w, h) => w / h)
-      
-    // console.log(datum);
-    
-    // Adjust for using Sony full frame FE lenses on a crop sensor.
-    // const adjustedFocalLength = 
-    //   datum.Lens.includes("FE") 
-    //     ? Number(datum.FocalLength.replace(" mm", "")) * datum.ScaleFactor35efl
-    //     : datum.FocalLength.replace(" mm", "");
 
     const info = {
       width: datum.ImageWidth,
@@ -84,10 +76,6 @@ let logData = exifData => {
       subsetA = a.fileName.split(".")[0].split("-")[1],
       subsetB = b.fileName.split(".")[0].split("-")[1]
     if (setA === setB) {
-      // console.log(`Set ${setA} = Set ${setB}.`);
-      // console.log(`Subset ${subsetA} v subset ${subsetB}:`);
-      // console.log("subsetA > subsetB", subsetA > subsetB);
-      // console.log("subsetA < subsetB", subsetA < subsetB);
       if (subsetA > subsetB) return -1
       if (subsetA < subsetB) return 1
       if (subsetA === subsetB) return 0
