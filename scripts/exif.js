@@ -51,6 +51,10 @@ let logData = exifData => {
     const aspectRatio = datum.ImageSize.split("x")
       .map(n => parseInt(n))
       .reduce((w, h) => w / h)
+    
+    const dateOriginal = datum.DateTimeOriginal.split(" ")[0].replace(/:/g, "-")
+    const timeOriginal = datum.DateTimeOriginal.split(" ")[1]
+    const dateTimeOriginal = `${dateOriginal}T${timeOriginal}`
 
     const info = {
       width: datum.ImageWidth,
@@ -62,7 +66,7 @@ let logData = exifData => {
       focalLength: datum.FocalLengthIn35mmFormat,
       iso: datum.ISO,
       shutterSpeed: String(datum.ShutterSpeed),
-      date: datum.DateTimeOriginal,
+      date: dateTimeOriginal,
       description: datum.Description || "",
     }
 
@@ -70,18 +74,27 @@ let logData = exifData => {
   })
 
   // Sort the image data by filename
+  // fileInfo.sort((a, b) => {
+  //   let setA = parseInt(a.fileName.split("-")[0]),
+  //     setB = parseInt(b.fileName.split("-")[0]),
+  //     subsetA = a.fileName.split(".")[0].split("-")[1],
+  //     subsetB = b.fileName.split(".")[0].split("-")[1]
+  //   if (setA === setB) {
+  //     if (subsetA > subsetB) return -1
+  //     if (subsetA < subsetB) return 1
+  //     if (subsetA === subsetB) return 0
+  //   }
+  //   if (setA < setB) return -1
+  //   if (setA > setB) return 1
+  //   return 0
+  // })
+  
+  // Sort the image data by time shot
   fileInfo.sort((a, b) => {
-    let setA = parseInt(a.fileName.split("-")[0]),
-      setB = parseInt(b.fileName.split("-")[0]),
-      subsetA = a.fileName.split(".")[0].split("-")[1],
-      subsetB = b.fileName.split(".")[0].split("-")[1]
-    if (setA === setB) {
-      if (subsetA > subsetB) return -1
-      if (subsetA < subsetB) return 1
-      if (subsetA === subsetB) return 0
-    }
-    if (setA < setB) return -1
-    if (setA > setB) return 1
+    let dateA = Date.parse(a.date),
+      dateB = Date.parse(b.date)
+    if (dateA < dateB) return -1
+    if (dateA > dateB) return 1
     return 0
   })
 
