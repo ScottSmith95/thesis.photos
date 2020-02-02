@@ -5,7 +5,7 @@
   "author": "Scott Smith <mail@ScottHSmith.com> (https://ScottHSmith.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ScottSmith95/thesis.photos.git"
+    "url": "https://github.com/ScottSmith95/thesis-photos.git"
   },
   "license": "UNLICENSED",
   "engines": {
@@ -16,11 +16,6 @@
     "husky": "4.2.1",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
