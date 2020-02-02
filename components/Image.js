@@ -53,8 +53,8 @@ function Image(props) {
     <img
       src = {`/images/${name}`}
       alt = {`${description}`}
-      width={width}
-      height={height}
+      width = {width}
+      height = {height}
       loading = "lazy"
       onLoad = {() => setImageLoaded(true)}
       style = {ssrStyle}
@@ -71,7 +71,7 @@ function Image(props) {
     )
 
   return (
-    <div
+    <figure
       ref={ref}
       className="pane pane--image"
       style={
@@ -83,17 +83,15 @@ function Image(props) {
           : null
       }
     >
-      <div className="pane__image">
-        {(onScreen || !IS_CLIENT) && image}
-        {!imageLoaded && IS_CLIENT ? (
-          <Placeholder aspectRatio={aspectRatio} />
-        ) : null}
-      </div>
-      <p className="image__info">
+      {(onScreen || !IS_CLIENT) && image}
+      {!imageLoaded && IS_CLIENT ? (
+        <Placeholder aspectRatio={aspectRatio} />
+      ) : null}
+      <figcaption className="image__info">
         {camera}, {`\u0192${fStop}, `}
         {speed} sec, {focalLength}, <span className="caps">ISO</span> {iso}
-      </p>
-    </div>
+      </figcaption>
+    </figure>
   )
 }
 

@@ -177,17 +177,16 @@
 	transition: 0.5s ease;
 	transition-property: transform, opacity;
   }
+  
+  .image__img,
+  .image__info {
+	margin-bottom: calc(var(--baseline) / 2);
+  }
 
   @media (orientation: portrait) {
 	.pane--text {
 	  flex-basis: auto;
 	}
-  }
-
-  .pane__image {
-	/* display: flex; */
-	flex: 1 1 100%;
-	margin-bottom: calc(var(--baseline) / 2);
   }
 
   .image__img {
