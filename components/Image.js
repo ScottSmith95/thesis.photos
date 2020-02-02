@@ -19,13 +19,15 @@ function Image(props) {
     threshold: thresholdArray,
   })
   const {
+    width,
+    height,
     aspectRatio,
     camera,
     description,
     fStop,
     focalLength,
     iso,
-    name,
+    name
   } = props
 
   React.useEffect(() => {
@@ -51,6 +53,8 @@ function Image(props) {
     <img
       src = {`/images/${name}`}
       alt = {`${description}`}
+      width={width}
+      height={height}
       loading = "lazy"
       onLoad = {() => setImageLoaded(true)}
       style = {ssrStyle}
