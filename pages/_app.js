@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@ScottSmith95" />
           <meta property="twitter:account_id" content="36173544" />
-          <meta property="og:title" content="Daniel Eden &mdash; Photography" />
+          <meta property="og:title" content={siteInfo.title}/>
           <meta property="og:type" content="website" />
           <meta property="og:description" content={siteInfo.description} />
           

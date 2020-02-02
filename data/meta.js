@@ -1,7 +1,7 @@
 import React from "react"
 
 const siteInfo = {
-  title: "Thesis Photos",
+  title: "Thesis Photography",
   description: "Photography by Scott Smith, a designer living in Seattle, WA.",
   fullDescription: (
     <>
