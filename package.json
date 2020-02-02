@@ -1,0 +1,59 @@
+{
+  "name": "thesis-photos",
+  "version": "0.1.0",
+  "description": "Photo gallery for Thesis.",
+  "author": "Scott Smith <mail@ScottHSmith.com> (https://ScottHSmith.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ScottSmith95/thesis.photos.git"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "^12.13.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "husky": "4.2.1",
+    "lint-staged": "10.0.7",
+    "prettier": "1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "dist-exiftool": "10.53.0",
+    "next": "^9.2.1",
+    "node-exiftool": "2.3.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  },
+  "scripts": {
+    "predev": "node ./scripts/exif.js",
+    "prestart": "node ./scripts/exif.js",
+    "prebuild": "node ./scripts/exif.js",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "browserslist": {
+    "production": [
+      "last 2 versions",
+      "> 2.5% in US",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
