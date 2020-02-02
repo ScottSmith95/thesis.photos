@@ -74,29 +74,31 @@ let logData = exifData => {
   })
 
   // Sort the image data by filename
-  // fileInfo.sort((a, b) => {
-  //   let setA = parseInt(a.fileName.split("-")[0]),
-  //     setB = parseInt(b.fileName.split("-")[0]),
-  //     subsetA = a.fileName.split(".")[0].split("-")[1],
-  //     subsetB = b.fileName.split(".")[0].split("-")[1]
-  //   if (setA === setB) {
-  //     if (subsetA > subsetB) return -1
-  //     if (subsetA < subsetB) return 1
-  //     if (subsetA === subsetB) return 0
-  //   }
-  //   if (setA < setB) return -1
-  //   if (setA > setB) return 1
-  //   return 0
-  // })
+  const sortByFilename = (a, b) => {
+    let setA = parseInt(a.fileName.split("-")[0]),
+      setB = parseInt(b.fileName.split("-")[0]),
+      subsetA = a.fileName.split(".")[0].split("-")[1],
+      subsetB = b.fileName.split(".")[0].split("-")[1]
+    if (setA === setB) {
+      if (subsetA > subsetB) return -1
+      if (subsetA < subsetB) return 1
+      if (subsetA === subsetB) return 0
+    }
+    if (setA < setB) return -1
+    if (setA > setB) return 1
+    return 0
+  }
   
-  // Sort the image data by time shot
-  fileInfo.sort((a, b) => {
+  const sortByExifDateTime = (a, b) => {
     let dateA = Date.parse(a.date),
       dateB = Date.parse(b.date)
     if (dateA < dateB) return -1
     if (dateA > dateB) return 1
     return 0
-  })
+  }
+  
+  // Sort the image data by time shot
+  fileInfo.sort(sortByExifDateTime);
 
   // Write data to file for the app to consume
   let writeString = `const imageData = ${JSON.stringify(fileInfo, null, " ")}
