@@ -76,10 +76,14 @@
 
   a {
 	color: inherit;
-	text-decoration-color: rgba(255, 255, 255, 0.5);
+	text-decoration-color: rgba(0, 0, 0, 0.5);
 	text-decoration-skip-ink: auto;
 	transition: 0.3s ease;
 	transition-property: color, text-decoration-color;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+	text-decoration-color: rgba(255, 255, 255, 0.5);
   }
 
   a:hover,
@@ -146,9 +150,25 @@
 
   .pane--text {
 	align-self: flex-start;
-	padding-left: calc(var(--baseline) * 2);
-	padding-right: calc(var(--baseline) * 2);
 	flex: 0 0 35rem;
+  }
+  
+  .pane--text p {
+	max-width: 35rem;
+  }
+  
+  @media (orientation: portrait) {
+	  .pane--text {
+		padding-top: calc(var(--baseline) * 2);
+		padding-bottom: calc(var(--baseline) * 2);
+	}
+  }
+  
+  @media (orientation: landscape) {
+	  .pane--text {
+		padding-left: calc(var(--baseline) * 2);
+		padding-right: calc(var(--baseline) * 2);
+	}
   }
 
   .pane--image {
