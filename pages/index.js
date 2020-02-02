@@ -38,6 +38,9 @@ function HomePage() {
         <meta property="og:title" content="Daniel Eden &mdash; Photography" />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={siteInfo.description} />
+        
+        <link rel="icon" type="image/png" href="/favicons/favicon-32.png" sizes="32x32">
+        <link rel="apple-touch-icon" href="/favicons/favicon-180.png">
       </Head>
       <App preface={siteInfo.fullDescription} images={images} />
     </>

@@ -11,8 +11,8 @@ const siteInfo = {
         for impact-focused companies.
       </p>
       <p>
-        My photos encompass fashion and dance portraiture in addition to 
-        engagement photography.
+        My photos focus on portraiture including fashion and dance 
+        as well as engagement photography.
       </p>
       <p>
         If you are interested in working with me on a project or just want 
@@ -22,7 +22,7 @@ const siteInfo = {
     </>
   ),
   image:
-    "https://dephotos.imgix.net/00013.jpg?auto=format&dpr=2&fm=pjpg&crop=faces&fit=max&w=1&h=900",
+    "https://scotthsmith.com/assets/images/ScottPic.jpg",
 }
 
 export default siteInfo
