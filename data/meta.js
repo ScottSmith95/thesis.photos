@@ -1,12 +1,12 @@
 import React from "react"
 
 const siteInfo = {
-  title: "Thesis Photography",
+  title: "Thesis | Photos",
   description: "Photography by Scott Smith, a designer living in Seattle, WA.",
   fullDescription: (
     <>
       <p>
-        I'm Scott Smith, digital creative in Seattle Washington. 
+        I'm <a href="https://ScottHSmith.com">Scott Smith</a>, digital creative in Seattle Washington. 
         I take lots of photos and spend most of my week building products 
         for impact-focused companies.
       </p>
