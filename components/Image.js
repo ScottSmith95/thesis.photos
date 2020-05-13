@@ -1,5 +1,5 @@
 import React from "react"
-import useIntersect from "../hooks/useIntersection"
+import useIntersect from "hooks/useIntersection"
 
 const IS_CLIENT = typeof window !== "undefined"
 const IS_DEV = process.env.NODE_ENV !== "production"

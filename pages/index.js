@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
-import imageData from "../data/manifest"
-import siteInfo from "../data/meta"
+import imageData from "data/manifest"
+import siteInfo from "data/meta"
 
-import Preface from "../components/Preface"
-import Image from "../components/Image"
+import Preface from "components/Preface"
+import Image from "components/Image"
 
 const images = imageData.slice().reverse()
 

@@ -1,8 +1,8 @@
 import Head from "next/head"
 
-import siteInfo from "../data/meta"
+import siteInfo from "data/meta"
 
-import '../components/styles/global.css'
+import 'components/styles/global.css'
 
 export default function App({ Component, pageProps }) {
   return (
