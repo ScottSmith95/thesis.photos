@@ -6,7 +6,7 @@ node_modules
 # production
 build
 .next
-.now
+.vercel
 
 # misc
 .DS_Store
