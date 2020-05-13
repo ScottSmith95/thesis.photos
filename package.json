@@ -13,7 +13,7 @@
   },
   "private": true,
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "^2.0.5"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "dist-exiftool": "10.53.0",
-    "next": "^9.2.2",
+    "next": "^9.4.0",
     "node-exiftool": "2.3.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "scripts": {
     "predev": "node ./scripts/exif.js",
