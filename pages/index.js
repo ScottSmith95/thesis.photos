@@ -1,13 +1,10 @@
-import React, { useEffect } from "react"
-import imageData from "data/manifest"
+import React, { useState, useEffect } from "react"
 import siteInfo from "data/meta"
 
 import Preface from "components/Preface"
 import Image from "components/Image"
 
-const images = imageData.slice().reverse()
-
-function HomePage() {
+export default function HomePage({ imageData }) {
   useEffect(() => {
     let content = document.body
     window.addEventListener("mousewheel", MouseWheelHandler)
@@ -28,7 +25,7 @@ function HomePage() {
   return (
     <main className="site-content">
       <Preface>{siteInfo.fullDescription}</Preface>
-      {images.map((img, i) => (
+      {imageData.slice().reverse().map((img, i) => (
         <Image
           key={i}
           aspectRatio={img.aspectRatio}
@@ -37,7 +34,7 @@ function HomePage() {
           focalLength={img.focalLength}
           iso={img.iso}
           name={img.fileName}
-          speed={img.shutterSpeed}
+          speed={iimageDatamg.shutterSpeed}
           description={img.description}
         />
       ))}
@@ -45,4 +42,12 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export async function getStaticProps({ params }) {
+  const imageData = await import("data/manifest")
+
+  return {
+    props: {
+      imageData: imageData.default,
+    },
+  }
+}
