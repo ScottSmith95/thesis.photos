@@ -34,7 +34,7 @@ export default function HomePage({ imageData }) {
           focalLength={img.focalLength}
           iso={img.iso}
           name={img.fileName}
-          speed={iimageDatamg.shutterSpeed}
+          speed={img.shutterSpeed}
           description={img.description}
         />
       ))}
