@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "dist-exiftool": "10.53.0",
-    "next": "^9.4.0",
+    "next": "^9.4.4",
     "node-exiftool": "2.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
