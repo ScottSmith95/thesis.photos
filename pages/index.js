@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import siteInfo from "data/meta"
 
 import Preface from "components/Preface"
-import Image from "components/Image"
+import PhotosImage from "components/Image"
 
 export default function HomePage({ imageData }) {
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function HomePage({ imageData }) {
     <main className="site-content">
       <Preface>{siteInfo.fullDescription}</Preface>
       {imageData.slice().reverse().map((img, i) => (
-        <Image
+        <PhotosImage
           key={i}
           aspectRatio={img.aspectRatio}
           camera={img.camera}

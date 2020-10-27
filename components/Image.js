@@ -12,7 +12,7 @@ const Placeholder = ({ aspectRatio }) => {
   return <div role="presentation" className="placeholder" style={style} />
 }
 
-function Image(props) {
+function PhotosImage(props) {
   const [imageLoaded, setImageLoaded] = React.useState(false)
   const [onScreen, setOnScreen] = React.useState(false)
   const [ref, entry] = useIntersect({
@@ -96,4 +96,4 @@ function Image(props) {
   )
 }
 
-export default Image
+export default PhotosImage
