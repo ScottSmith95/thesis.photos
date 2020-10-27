@@ -1,4 +1,5 @@
 import React from "react"
+import Image from 'next/image'
 import useIntersect from "hooks/useIntersection"
 
 const IS_CLIENT = typeof window !== "undefined"
@@ -50,7 +51,7 @@ function Image(props) {
     : null
 
   const image = (
-    <img
+    <Image
       src = {`/images/${name}`}
       alt = {`${description}`}
       width = {width}
