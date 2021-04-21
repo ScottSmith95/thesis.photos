@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 
-export default ({
+function useIntersection ({
   root = null,
   rootMargin,
   threshold = 0,
-}) => {
+}) {
   const [entry, updateEntry] = useState(null)
   const [node, setNode] = useState(null)
 
@@ -29,4 +29,6 @@ export default ({
   }, [node, observer])
 
   return [setNode, entry]
-}
+};
+
+export default useIntersection;

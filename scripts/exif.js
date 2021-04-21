@@ -10,6 +10,7 @@ function findCamera(make, model) {
     if (model === "ILCE-7M2") return "Sony α7 Mark II";
     if (model === "ILCE-7M3") return "Sony α7 Mark III";
     if (model === "ILCE-7M4") return "Sony α7 Mark IV";
+    if (model === "ILCE-7C") return "Sony α7C";
   }
   
   else {

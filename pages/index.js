@@ -28,6 +28,8 @@ export default function HomePage({ imageData }) {
       {imageData.slice().reverse().map((img, i) => (
         <PhotosImage
           key={i}
+          width={img.width}
+          height={img.height}
           aspectRatio={img.aspectRatio}
           camera={img.camera}
           fStop={img.fStop}

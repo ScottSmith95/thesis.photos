@@ -1,16 +1,11 @@
 import React from "react"
-import Image from 'next/image'
+import NextImage from 'next/image'
 import useIntersect from "hooks/useIntersection"
 
 const IS_CLIENT = typeof window !== "undefined"
 const IS_DEV = process.env.NODE_ENV !== "production"
 
 const thresholdArray = Array.from(Array(10).keys(), i => i / 10)
-
-const Placeholder = ({ aspectRatio }) => {
-  const style = { "--aspect-ratio": aspectRatio }
-  return <div role="presentation" className="placeholder" style={style} />
-}
 
 function PhotosImage(props) {
   const [imageLoaded, setImageLoaded] = React.useState(false)
@@ -30,36 +25,28 @@ function PhotosImage(props) {
     iso,
     name
   } = props
+  
+  console.log(width, height);
 
   React.useEffect(() => {
-    if (entry?.intersectionRatio > 0) {
+    if (entry?.intersectionRatio > 0.5) {
       setOnScreen(true)
+    } else {
+      setOnScreen(false)
     }
-  }, [entry])
-
-  const imgClass = [
-    "image__img",
-    IS_CLIENT
-      ? imageLoaded && onScreen
-        ? "is-loaded"
-        : "is-not-loaded"
-      : "ssr",
-  ].join(" ")
-
-  const ssrStyle = !IS_CLIENT
-    ? ({ "--aspect-ratio": aspectRatio })
-    : null
+  }, [entry, onScreen])
 
   const image = (
-    <Image
+    <NextImage
       src = {`/images/${name}`}
       alt = {`${description}`}
       width = {width}
       height = {height}
+      layout="responsive"
       loading = "lazy"
+      className={`image ${imageLoaded ? "loaded" : "not-loaded"}`}
       onLoad = {() => setImageLoaded(true)}
-      style = {ssrStyle}
-      className = {imgClass}
+      sizes={`(orientation: landscape) calc(80vh * ${aspectRatio}), 100vw`}
     />
   )
 
@@ -72,27 +59,54 @@ function PhotosImage(props) {
     )
 
   return (
+    <>
     <figure
       ref={ref}
       className="pane pane--image"
-      style={
-        IS_CLIENT
-          ? {
-              opacity: Math.max(entry?.intersectionRatio || 0, 0.1),
-              transform: `scale(${0.9 + entry?.intersectionRatio / 10})`,
-            }
-          : null
-      }
     >
-      {(onScreen || !IS_CLIENT) && image}
-      {!imageLoaded && IS_CLIENT ? (
-        <Placeholder aspectRatio={aspectRatio} />
-      ) : null}
+      <div className="image-container">{image}</div>
       <figcaption className="image__info">
         {camera}, {`\u0192${fStop}, `}
         {speed} sec, {focalLength}, <span className="caps">ISO</span> {iso}
       </figcaption>
     </figure>
+    <style jsx>{`
+      .image-container {
+        opacity: ${onScreen ? 1 : 0.4};
+        transition: 0.3s ease;
+        transition-property: opacity;
+      }
+    `}</style>
+    <style jsx>{`
+      .pane {
+        --aspect-ratio: ${aspectRatio};
+      }
+      .image-container {
+        height: var(--imgSize);
+        width: calc(var(--imgSize) * var(--aspect-ratio));
+      }
+      .pane :global(.image) {
+        display: block;
+        flex: 0 0 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: 0.3s ease opacity;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.15);
+        height: var(--imgSize);
+      }
+      @media (orientation: portrait) {
+        .pane {
+          height: auto;
+          width: auto;
+        }
+        .image-container {
+          width: 100%;
+          height: auto;
+        }
+      }
+    `}</style>
+    </>
   )
 }
 

@@ -9,7 +9,7 @@
   },
   "license": "UNLICENSED",
   "engines": {
-    "node": "^12.13.0"
+    "node": "^14.15.0"
   },
   "private": true,
   "devDependencies": {
@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "dist-exiftool": "10.53.0",
-    "next": "^10.0.3",
+    "next": "^10.1.2",
     "node-exiftool": "2.3.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "predev": "node ./scripts/exif.js",
