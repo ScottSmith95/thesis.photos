@@ -25,8 +25,6 @@ function PhotosImage(props) {
     iso,
     name
   } = props
-  
-  console.log(width, height);
 
   React.useEffect(() => {
     if (entry?.intersectionRatio > 0.5) {

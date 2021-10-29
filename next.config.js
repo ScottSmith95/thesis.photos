@@ -1,5 +1,6 @@
 module.exports = {
-	future: {
-		webpack5: true,
-	},
+	swcMinify: true,
+	images: {
+		formats: ['image/avif']
+	}
 }
